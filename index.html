@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Todo List</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <div id="appContainer">
         <div id="headerContainer">
             <h1>My todo list</h1>
         </div>
-        <form>
-            <input id="addTask">Task</input>
-            <button id="submitButton">Submit</button>
+        <form id="addTaskForm">
+            <input type="text" id="addTask" placeholder="Enter a task">
+            <button type="submit" id="submitButton">Submit</button>
         </form>
         <div id="listContainer">
-            <div id="taskContainer">
-                <p id="TaskDate">22-01-25</p>
-                <p id="TaskTitle">Walk dog</p>
-                <input type="checkbox" id="toggleBox"></div>
-                <button id="deleteTask">Delete task</button>
-            </div>
+            <!-- Task list will be added here -->
         </div>
     </div>
+
+    <script src="out/addTodo.js" type="module"></script> 
 </body>
 </html>
