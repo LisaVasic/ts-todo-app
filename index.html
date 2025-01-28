@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <div id="appContainer">
+    <id="appContainer">
         <div id="headerContainer">
             <h1>My todo list</h1>
+        </div>
+        <div id="selectBtnContainer">
+            <button id="selectButton">Select</button>
+        </div>
+        <div id="deleteContainer">
+            <p>select tasks</p>
+            <button id="deleteButton">Delete</button>
         </div>
         <form id="addTaskForm">
             <input type="text" id="addTask" placeholder="Enter a task">
@@ -21,5 +28,6 @@
     </div>
 
     <script src="out/addTodo.js" type="module"></script> 
+    <script src="out/deleteTodo.js" type="module"></script> 
 </body>
 </html>

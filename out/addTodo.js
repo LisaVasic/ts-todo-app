@@ -1,9 +1,12 @@
 const form = document.getElementById('addTaskForm');
 const input = document.getElementById('addTask');
 const submitButton = document.getElementById('submitButton');
+const selectButton = document.getElementById('selectButton');
 const listContainer = document.getElementById('listContainer');
 // Initialize todoList as an empty array of Task objects
 let todoList = [];
+// Start id
+let NextId = 1;
 // Function to get a task by its title
 export function getTask(title) {
     return todoList.find((item) => item.title === title);
@@ -15,22 +18,34 @@ export function getTodoList() {
 // Function to add a new task
 export function addTask(title) {
     const task = {
+        id: NextId,
         title,
         completed: false,
         createdAt: new Date(), // takes current date
     };
     todoList.push(task);
+    NextId++;
     return task;
 }
 // Function to render the task in the listContainer
 function renderTask(task) {
+    const select = document.createElement('input');
+    select.type = 'checkbox';
+    select.classList.add('checkbox'); // class to reference to the checkboxes
     const taskElement = document.createElement('div');
     const taskTitle = document.createElement('p');
     taskTitle.textContent = task.title;
     const taskDate = document.createElement('p');
-    taskDate.textContent = `Created on: ${task.createdAt.toLocaleString()}`;
-    taskElement.appendChild(taskTitle);
+    //Format the date
+    const formattedDate = task.createdAt.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+    });
+    taskDate.textContent = `${formattedDate}`;
     taskElement.appendChild(taskDate);
+    taskElement.appendChild(taskTitle);
+    taskElement.appendChild(select);
     listContainer.appendChild(taskElement);
 }
 // Event listener for the form submission
