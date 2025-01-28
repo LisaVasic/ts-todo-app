@@ -1,9 +1,13 @@
-const deleteContainer = document.getElementById('deleteContainer') as HTMLDivElement;
-const deleteButton = document.getElementById('deleteButton') as HTMLButtonElement;
-const selectButton = document.getElementById('selectButton') as HTMLButtonElement;
+import { Task } from "./types";
 
+const deleteContainer = document.getElementById('deleteContainer') as HTMLDivElement;
+const selectButton = document.getElementById('selectButton') as HTMLButtonElement;
+const listContainer = document.getElementById('listContainer') as HTMLDivElement;
 
 let isSelected = false;
+
+
+
 
 // Event listener for select button
 selectButton.addEventListener('click', () => {
@@ -31,21 +35,33 @@ selectButton.addEventListener('click', () => {
         });
 
         deleteContainer.style.display = 'none'
-        
+
         selectButton.textContent = 'Select'; // Change button text
     }
 });
 
 
+// Calls function below when delete button is clicked
+const deleteButton = document.getElementById('deleteButton')?.addEventListener("click", deleteTasks)
+
+
+// Function to delete selected tasks
+function deleteTasks () {
+    const selectedCheckboxes = document.querySelectorAll('#listContainer input[type="checkbox"]:checked');
+    
+    selectedCheckboxes.forEach(checkbox => {
+        checkbox.parentElement?.remove();
+    });
+}
+
+
+// Call function when delete button is clicked
+// deleteButton.addEventListener
 
 
 
+//document.getElementById("myButton").addEventListener("click", myFunction);
 
-// function myFunction() {
-//     var x = document.getElementById("myDIV");
-//     if (x.style.display === "none") {
-//       x.style.display = "block";
-//     } else {
-//       x.style.display = "none";
-//     }
-//   }
+//function myFunction() {
+  // Your code here
+//}

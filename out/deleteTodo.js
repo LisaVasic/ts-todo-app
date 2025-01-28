@@ -1,7 +1,6 @@
-"use strict";
 const deleteContainer = document.getElementById('deleteContainer');
-const deleteButton = document.getElementById('deleteButton');
 const selectButton = document.getElementById('selectButton');
+const listContainer = document.getElementById('listContainer');
 let isSelected = false;
 // Event listener for select button
 selectButton.addEventListener('click', () => {
@@ -28,11 +27,18 @@ selectButton.addEventListener('click', () => {
         selectButton.textContent = 'Select'; // Change button text
     }
 });
-// function myFunction() {
-//     var x = document.getElementById("myDIV");
-//     if (x.style.display === "none") {
-//       x.style.display = "block";
-//     } else {
-//       x.style.display = "none";
-//     }
-//   }
+const deleteButton = document.getElementById('deleteButton')?.addEventListener("click", deleteTasks);
+// Function to delete selected tasks
+function deleteTasks() {
+    const selectedCheckboxes = document.querySelectorAll('#listContainer input[type="checkbox"]:checked');
+    selectedCheckboxes.forEach(checkbox => {
+        checkbox.parentElement?.remove();
+    });
+}
+export {};
+// Call function when delete button is clicked
+// deleteButton.addEventListener
+//document.getElementById("myButton").addEventListener("click", myFunction);
+//function myFunction() {
+// Your code here
+//}
