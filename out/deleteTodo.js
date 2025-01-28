@@ -2,11 +2,11 @@
 const deleteContainer = document.getElementById('deleteContainer');
 const deleteButton = document.getElementById('deleteButton');
 const selectButton = document.getElementById('selectButton');
-let isActive = false;
+let isSelected = false;
 // Event listener for select button
 selectButton.addEventListener('click', () => {
-    isActive = !isActive; // toggles..
-    if (isActive === true) {
+    isSelected = !isSelected; // toggles..
+    if (isSelected === true) {
         // Actions to perform when isActive is true (checkboxes are shown)
         //Assigns the elements with class checkbox to the checkboxes variable
         const checkboxes = document.querySelectorAll('.checkbox');
@@ -14,6 +14,7 @@ selectButton.addEventListener('click', () => {
         checkboxes.forEach(checkbox => {
             checkbox.style.display = 'block'; // Show checkboxes
         });
+        deleteContainer.style.display = 'block';
         // Changes the text on the button to cancel when isActive
         selectButton.textContent = 'Cancel'; // Change button text
     }
@@ -23,6 +24,7 @@ selectButton.addEventListener('click', () => {
         checkboxes.forEach(checkbox => {
             checkbox.style.display = 'none'; // Hide checkboxes
         });
+        deleteContainer.style.display = 'none';
         selectButton.textContent = 'Select'; // Change button text
     }
 });
