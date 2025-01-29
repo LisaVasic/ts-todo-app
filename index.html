@@ -7,24 +7,26 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <id="appContainer">
+    <div id="appContainer">
         <div id="headerContainer">
             <h1>My todo list</h1>
         </div>
         <div id="selectBtnContainer">
             <button id="selectButton">Select</button>
         </div>
-        <div id="deleteContainer">
-            <p>select tasks</p>
-            <button type="button" id="deleteButton">Delete</button>
+        <div id="listContainer">
+            <!-- Task list will be added here -->
+        </div>
+        <div id="space">
+            <div id="deleteContainer">
+                <p>select tasks</p>
+                <button type="button" id="deleteButton">Delete</button>
+            </div>
         </div>
         <form id="addTaskForm">
             <input type="text" id="addTask" placeholder="Enter a task">
             <button type="submit" id="submitButton">Submit</button>
         </form>
-        <div id="listContainer">
-            <!-- Task list will be added here -->
-        </div>
     </div>
 
     <script src="out/addTodo.js" type="module"></script> 

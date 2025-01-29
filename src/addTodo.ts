@@ -3,8 +3,8 @@ import { Task, TodoList } from "./types";
 
 const form = document.getElementById('addTaskForm') as HTMLFormElement;
 const input = document.getElementById('addTask') as HTMLInputElement;
-const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
-const selectButton = document.getElementById('selectButton') as HTMLButtonElement;
+// const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+// const selectButton = document.getElementById('selectButton') as HTMLButtonElement;
 const listContainer = document.getElementById('listContainer') as HTMLDivElement;
 
 
@@ -38,10 +38,17 @@ export function addTask(title: string): Task {
 }
 
 // Function to render the task in the listContainer
-function renderTask(task: Task) {
+function renderTask(task: Task): void {
+    // hidden checkbox to delete selected
     const select = document.createElement('input');
     select.type = 'checkbox'
     select.classList.add('checkbox'); // class to reference to the checkboxes
+
+    // checkbox to toggle todo
+    const checkTask = document.createElement('input');
+    checkTask.type = 'checkbox'
+    checkTask.classList.add('checkOfTask'); // class to reference to the checkboxes
+
     const taskElement = document.createElement('div');
     const taskTitle = document.createElement('p');
     taskTitle.textContent = task.title;
@@ -49,7 +56,7 @@ function renderTask(task: Task) {
     const taskDate = document.createElement('p');
 
     //Format the date
-    const formattedDate = task.createdAt.toLocaleDateString('en-GB', {
+    const formattedDate: string = task.createdAt.toLocaleDateString('en-GB', {
         day: '2-digit', 
         month: 'short', 
         year: 'numeric'
@@ -60,6 +67,7 @@ function renderTask(task: Task) {
     taskElement.appendChild(taskDate);
     taskElement.appendChild(taskTitle);
     taskElement.appendChild(select);
+    taskElement.appendChild(checkTask);
 
     listContainer.appendChild(taskElement);
 }

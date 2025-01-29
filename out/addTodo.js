@@ -1,7 +1,7 @@
 const form = document.getElementById('addTaskForm');
 const input = document.getElementById('addTask');
-const submitButton = document.getElementById('submitButton');
-const selectButton = document.getElementById('selectButton');
+// const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+// const selectButton = document.getElementById('selectButton') as HTMLButtonElement;
 const listContainer = document.getElementById('listContainer');
 // Initialize todoList as an empty array of Task objects
 let todoList = [];
@@ -29,9 +29,14 @@ export function addTask(title) {
 }
 // Function to render the task in the listContainer
 function renderTask(task) {
+    // hidden checkbox to delete selected
     const select = document.createElement('input');
     select.type = 'checkbox';
     select.classList.add('checkbox'); // class to reference to the checkboxes
+    // checkbox to toggle todo
+    const checkTask = document.createElement('input');
+    checkTask.type = 'checkbox';
+    checkTask.classList.add('checkOfTask'); // class to reference to the checkboxes
     const taskElement = document.createElement('div');
     const taskTitle = document.createElement('p');
     taskTitle.textContent = task.title;
@@ -46,6 +51,7 @@ function renderTask(task) {
     taskElement.appendChild(taskDate);
     taskElement.appendChild(taskTitle);
     taskElement.appendChild(select);
+    taskElement.appendChild(checkTask);
     listContainer.appendChild(taskElement);
 }
 // Event listener for the form submission

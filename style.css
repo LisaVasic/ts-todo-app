@@ -1,6 +1,43 @@
-#deleteContainer {
- display: none;
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
 }
+
+#selectButton {
+    border: none;
+    background-color: white;
+}
+
+#appContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    border: solid 2px grey;
+    width: 40%;
+    height: 90%;
+}
+
+#listContainer {
+    border: solid 2px pink;
+    height: 50vh;
+    width: 90%;
+}
+
+#space {
+    border: solid 2px pink;
+    height: 30px;
+    width: 90%;
+}
+
+#deleteContainer {
+    display: flex;
+    flex-direction: row;
+    display: none;
+}
+
 
 .checkbox {
     display: none; /* Initially hidden */
@@ -8,3 +45,6 @@
 
 
 
+#headerContainer {
+    border: solid 2px black;
+}
