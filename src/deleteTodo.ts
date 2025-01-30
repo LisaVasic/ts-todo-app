@@ -48,9 +48,15 @@ const deleteButton = document.getElementById('deleteButton')?.addEventListener("
 function deleteTasks () {
     const selectedCheckboxes = document.querySelectorAll('#listContainer input[type="checkbox"]:checked');
     
-    selectedCheckboxes.forEach(checkbox => {
-        checkbox.parentElement?.remove();
-    });
+    // Asks to confirm the delete
+    if (confirm("Delete tasks")) {
+        selectedCheckboxes.forEach(checkbox => {
+            checkbox.parentElement?.remove();
+        }); 
+    } else {
+        
+    }
+    
 }
 
 

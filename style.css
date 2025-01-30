@@ -2,12 +2,16 @@ body {
     min-height: 100vh;
     display: grid;
     place-items: center;
+    font-family: "Roboto", serif;
+    text-align: left;
 }
 
-#selectButton {
-    border: none;
-    background-color: white;
+p {
+    text-align: left;
+    color: grey;
 }
+
+
 
 #appContainer {
     display: flex;
@@ -15,36 +19,216 @@ body {
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
-    border: solid 2px grey;
-    width: 40%;
+    border: solid 1px #110c25;
+    border-radius: 20px;
+    width: 50%;
     height: 90%;
+    padding: 20px;
+
+    @media (max-width: 480px) {
+        border: none;
+      }
+
+      @media (max-width: 1024px) {
+        width: 80%;
+      }
 }
 
+
+/* STYLING HEADING - Desktop */
+
+
+#headerContainer {
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-underline-offset: 10px;
+}
+
+h1 {
+    color: #110c25;
+}
+
+/* STYLING TASK ITEM - Desktop */
+
+
 #listContainer {
-    border: solid 2px pink;
     height: 50vh;
     width: 90%;
+    text-align: left;
+}
+
+.taskItem {
+    border: solid 1px  #FF9677;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat (2, 50%);
+    padding: 5px;
+    min-height: 60px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.taskTitle {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    text-align: left;
+    font-size: 20px;
+    color: #110c25;
+    align-self: center;
+    padding: 6px 0 0 15px;
+}
+
+.checkTask:checked + .taskTitle {
+    text-decoration: line-through; 
+    color: grey;
+}
+
+.taskDate {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 10px;
+    color: grey;
+    margin: 0;
+    text-align: left;
+    align-self: center;
+    padding: 0 0 0 15px;
+}
+
+.taskDate::before {
+    content: "Created at: ";
+    color: grey; 
+}
+
+/* STYLING CHECK OF TASK - Desktop */
+
+
+.checkTask {
+    appearance: none;
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+    width: 25px;
+    height: 25px;
+    border: 1.5px solid #ff9677;
+    border-radius: 50%;
+    display: inline-block;
+position: relative;
+cursor: pointer;
+background-color: white;
+}
+
+
+.checkTask:checked {
+    background-color: #FF9677;
+    border-color: #FF9677;
+    content: "";
+}
+
+
+.checkTask:checked::before {
+    content: "✔"; 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* STYLING DELETE BUTTON - Desktop */
+
+
+#selectButton {
+    border: none;
+    color: white;
+    background-color: rgba(196, 195, 195, 0.704);
+    border-radius: 10px;
+    padding: 2px 6px 2px 6px;
+}
+
+
+#selectBtnContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    width: 90%
+}
+
+.selectCheck {
+    grid-column: 3;
+    grid-row: 1;
+    width: 15px;
+    height: 15px;
+    justify-self: end;
 }
 
 #space {
-    border: solid 2px pink;
     height: 30px;
     width: 90%;
+    margin-bottom: 30px;
 }
 
 #deleteContainer {
-    display: flex;
-    flex-direction: row;
     display: none;
+    align-content: center;
+    flex-direction: row;
+    font-size: 12px;
+    width: 100%;
+    align-items: center; 
+    text-align: center;
+
+}
+
+#deleteButton {
+    flex-shrink: 0;
+    display: inline-block;
+    border: none;
+    background-color: white;
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+}
+
+#msg {
+    display: inline-block; 
 }
 
 
 .checkbox {
-    display: none; /* Initially hidden */
+    display: none; 
 }
 
+/* STYLING FORM */
 
+form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
 
-#headerContainer {
-    border: solid 2px black;
+}
+
+#submitButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 0;
+    border: none;
+    background-color: #ff9677;
+    color: white;
+}
+
+input {
+    width: 80%;
+    height: 30px;
+    padding-left: 10px;
+    border: solid 1px #110c25;
+    border-radius: 5px;
 }

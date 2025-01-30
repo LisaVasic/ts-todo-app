@@ -64,10 +64,17 @@ function renderTask(task: Task): void {
 
     taskDate.textContent = `${formattedDate}`;
 
-    taskElement.appendChild(taskDate);
     taskElement.appendChild(taskTitle);
     taskElement.appendChild(select);
+    taskElement.appendChild(taskDate);
     taskElement.appendChild(checkTask);
+    // Add a class for styling
+    taskElement.classList.add('taskItem'); 
+    taskTitle.classList.add('taskTitle');
+    select.classList.add('selectCheck');
+    taskDate.classList.add('taskDate');
+    checkTask.classList.add('checkTask');
+
 
     listContainer.appendChild(taskElement);
 }
@@ -78,13 +85,13 @@ form?.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent the page from refreshing on form submit
 
     // Get the value from the input field
-    const taskTitle = input.value.trim();  ///trim method removes unnecessary white space from input.
+    const taskTitle = input.value.trim();  ///Trim method removes unnecessary white space from input.
     if (taskTitle) {
         //Adds task to the list
         const newTask = addTask(taskTitle);
         // Use the renderTask function to add the task to the DOM
         renderTask(newTask)
-        
+    
     }
 
     // Clear the input field after submitting
