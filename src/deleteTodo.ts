@@ -1,4 +1,4 @@
-import { Task } from "./types";
+import { TaskItem } from "./types";
 
 const deleteContainer = document.getElementById('deleteContainer') as HTMLDivElement;
 const selectButton = document.getElementById('selectButton') as HTMLButtonElement;
@@ -13,6 +13,8 @@ selectButton.addEventListener('click', (): void => {
 
     // Select all checkboxes with proper type
     const checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.checkbox');
+    const taskItems: NodeListOf<HTMLElement> = document.querySelectorAll('.taskItem');
+
 
     if (isSelected === true) {
         // Show checkboxes
@@ -25,6 +27,11 @@ selectButton.addEventListener('click', (): void => {
 
         // Change button text
         selectButton.textContent = 'Cancel';
+
+        // Add class to taskItem
+        taskItems.forEach((taskItem) => {
+            taskItem.classList.add('selected');
+        });
     } else {
         // Hide checkboxes
         checkboxes.forEach((checkbox: HTMLInputElement) => {
@@ -36,6 +43,11 @@ selectButton.addEventListener('click', (): void => {
 
         // Change button text
         selectButton.textContent = 'Select';
+
+        // Remove class from taskItem
+        taskItems.forEach((taskItem) => {
+            taskItem.classList.remove('selected');
+        });
     }
 });
 
@@ -45,7 +57,7 @@ const deleteButton = document.getElementById('deleteButton')?.addEventListener("
 
 
 // Function to delete selected tasks
-function deleteTasks () {
+export function deleteTasks () {
     const selectedCheckboxes = document.querySelectorAll('#listContainer input[type="checkbox"]:checked');
     
     // Asks to confirm the delete
@@ -58,5 +70,3 @@ function deleteTasks () {
     }
     
 }
-
-

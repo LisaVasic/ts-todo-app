@@ -1,7 +1,5 @@
 const form = document.getElementById('addTaskForm');
 const input = document.getElementById('addTask');
-// const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
-// const selectButton = document.getElementById('selectButton') as HTMLButtonElement;
 const listContainer = document.getElementById('listContainer');
 // Initialize todoList as an empty array of Task objects
 let todoList = [];
@@ -28,20 +26,20 @@ export function addTask(title) {
     return task;
 }
 // Function to render the task in the listContainer
-function renderTask(task) {
-    // hidden checkbox to delete selected
+export function renderTask(task) {
+    // Hidden checkbox to delete selected
     const select = document.createElement('input');
     select.type = 'checkbox';
-    select.classList.add('checkbox'); // class to reference to the checkboxes
-    // checkbox to toggle todo
+    select.classList.add('checkbox'); // Class to reference to the checkboxes
+    // Checkbox to toggle todo
     const checkTask = document.createElement('input');
     checkTask.type = 'checkbox';
-    checkTask.classList.add('checkOfTask'); // class to reference to the checkboxes
+    checkTask.classList.add('checkTask'); // Class to reference to the checkboxes
     const taskElement = document.createElement('div');
     const taskTitle = document.createElement('p');
     taskTitle.textContent = task.title;
     const taskDate = document.createElement('p');
-    //Format the date
+    // Format the date
     const formattedDate = task.createdAt.toLocaleDateString('en-GB', {
         day: '2-digit',
         month: 'short',
@@ -59,6 +57,19 @@ function renderTask(task) {
     taskDate.classList.add('taskDate');
     checkTask.classList.add('checkTask');
     listContainer.appendChild(taskElement);
+    // Event listener to add a class for styling when task is checked.
+    checkTask.addEventListener("change", function () {
+        const taskItem = this.closest(".taskItem"); // Locate parent task item
+        // Adds a class when task is completed and removes when not
+        if (taskItem) {
+            if (this.checked) {
+                taskItem.classList.add("task-completed");
+            }
+            else {
+                taskItem.classList.remove("task-completed");
+            }
+        }
+    });
 }
 // Event listener for the form submission
 form?.addEventListener('submit', (event) => {

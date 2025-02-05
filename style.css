@@ -40,9 +40,6 @@ p {
 
 #headerContainer {
     font-size: 20px;
-    text-decoration: underline;
-    text-decoration-style: wavy;
-    text-underline-offset: 10px;
 }
 
 h1 {
@@ -56,6 +53,7 @@ h1 {
     height: 50vh;
     width: 90%;
     text-align: left;
+    overflow: scroll;
 }
 
 .taskItem {
@@ -82,11 +80,6 @@ h1 {
     padding: 6px 0 0 15px;
 }
 
-.checkTask:checked + .taskTitle {
-    text-decoration: line-through; 
-    color: grey;
-}
-
 .taskDate {
     grid-column: 1;
     grid-row: 2;
@@ -101,6 +94,18 @@ h1 {
 .taskDate::before {
     content: "Created at: ";
     color: grey; 
+}
+
+
+
+ /* CHECKED TASK STYLING */
+
+ .task-completed {
+    text-decoration: line-through;  
+}
+
+.task-completed .taskTitle {
+    color: grey;  
 }
 
 /* STYLING CHECK OF TASK - Desktop */
@@ -141,7 +146,8 @@ background-color: white;
 }
 
 
-/* STYLING DELETE BUTTON - Desktop */
+/* STYLING DELETE TASKS- Desktop */
+
 
 
 #selectButton {
@@ -168,11 +174,35 @@ background-color: white;
     justify-self: end;
 }
 
+
+.checkbox {
+    display: none; 
+}
+
+/* the taskItems when isSelected */
+.selected {
+    border-color: rgba(224, 223, 223, 0.441); 
+    background-color: rgb(234, 234, 234);
+    color: white;
+}
+
+.selected .checkTask {
+    display: none;
+}
+
+.selected .taskTitle {
+    color: rgb(255, 255, 255)
+}
+
+
+/* Delete button */
+
 #space {
     height: 30px;
     width: 90%;
     margin-bottom: 30px;
 }
+
 
 #deleteContainer {
     display: none;
@@ -197,11 +227,6 @@ background-color: white;
 
 #msg {
     display: inline-block; 
-}
-
-
-.checkbox {
-    display: none; 
 }
 
 /* STYLING FORM */

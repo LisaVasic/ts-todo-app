@@ -1,12 +1,8 @@
 import { Task, TodoList } from "./types";
 
-
 const form = document.getElementById('addTaskForm') as HTMLFormElement;
 const input = document.getElementById('addTask') as HTMLInputElement;
-// const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
-// const selectButton = document.getElementById('selectButton') as HTMLButtonElement;
 const listContainer = document.getElementById('listContainer') as HTMLDivElement;
-
 
 // Initialize todoList as an empty array of Task objects
 let todoList: Task[] = [];
@@ -38,16 +34,16 @@ export function addTask(title: string): Task {
 }
 
 // Function to render the task in the listContainer
-function renderTask(task: Task): void {
-    // hidden checkbox to delete selected
+export function renderTask(task: Task): void {
+    // Hidden checkbox to delete selected
     const select = document.createElement('input');
-    select.type = 'checkbox'
-    select.classList.add('checkbox'); // class to reference to the checkboxes
+    select.type = 'checkbox';
+    select.classList.add('checkbox'); // Class to reference to the checkboxes
 
-    // checkbox to toggle todo
+    // Checkbox to toggle todo
     const checkTask = document.createElement('input');
-    checkTask.type = 'checkbox'
-    checkTask.classList.add('checkOfTask'); // class to reference to the checkboxes
+    checkTask.type = 'checkbox';
+    checkTask.classList.add('checkTask'); // Class to reference to the checkboxes
 
     const taskElement = document.createElement('div');
     const taskTitle = document.createElement('p');
@@ -55,7 +51,7 @@ function renderTask(task: Task): void {
 
     const taskDate = document.createElement('p');
 
-    //Format the date
+    // Format the date
     const formattedDate: string = task.createdAt.toLocaleDateString('en-GB', {
         day: '2-digit', 
         month: 'short', 
@@ -68,16 +64,31 @@ function renderTask(task: Task): void {
     taskElement.appendChild(select);
     taskElement.appendChild(taskDate);
     taskElement.appendChild(checkTask);
+
     // Add a class for styling
-    taskElement.classList.add('taskItem'); 
+    taskElement.classList.add('taskItem');
     taskTitle.classList.add('taskTitle');
     select.classList.add('selectCheck');
     taskDate.classList.add('taskDate');
     checkTask.classList.add('checkTask');
 
-
     listContainer.appendChild(taskElement);
+
+    // Event listener to add a class for styling when task is checked.
+    checkTask.addEventListener("change", function (this: HTMLInputElement) {
+        const taskItem = this.closest(".taskItem") as HTMLElement; // Locate parent task item
+
+        // Adds a class when task is completed and removes when not
+        if (taskItem) {
+            if (this.checked) {
+                taskItem.classList.add("task-completed");
+            } else {
+                taskItem.classList.remove("task-completed");
+            }
+        }
+    });
 }
+
 
 
 // Event listener for the form submission
@@ -97,3 +108,6 @@ form?.addEventListener('submit', (event) => {
     // Clear the input field after submitting
     input.value = '';
 });
+
+
+
