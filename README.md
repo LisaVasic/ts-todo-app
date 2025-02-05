@@ -12,5 +12,4 @@ This app demonstrates the use of TypeScript for managing types, handling user in
 
 
 
-https://lisa-ts-todo-app.netlify.app/
 
